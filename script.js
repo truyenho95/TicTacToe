@@ -4,7 +4,7 @@ var position = {
       Y: null
     }
 var isWon = false;
-var squares = 3;
+var squares = 10;
 
 // Tạo bảng và addEvent ngay khi truy cập vào web
 window.onload = () => {
@@ -41,16 +41,18 @@ function getPosition(item) {
 }
 
 // [FUNCTION]: Kiểm tra theo đường thẳng
-function checkLine(a, b) {
+function checkLine(a, b, opponent) {
   // Check Line Horizontal
   for (var i=a-1; i<=a+1; i++) {
     var select0 = document.querySelector(`input[data-position="${i-1},${b}"]`);
     var select1 = document.querySelector(`input[data-position="${i},${b}"]`);
     var select2 = document.querySelector(`input[data-position="${i+1},${b}"]`);
+    var check1 = document.querySelector(`input[data-position="${i-2},${b}"]`);
+    var check2 = document.querySelector(`input[data-position="${i+2},${b}"]`);
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value) {
+    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -61,10 +63,12 @@ function checkLine(a, b) {
     var select0 = document.querySelector(`input[data-position="${a},${i-1}"]`);
     var select1 = document.querySelector(`input[data-position="${a},${i}"]`);
     var select2 = document.querySelector(`input[data-position="${a},${i+1}"]`);
+    var check1 = document.querySelector(`input[data-position="${a},${i-2}"]`);
+    var check2 = document.querySelector(`input[data-position="${a},${i+2}"]`);
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value) {
+    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -72,16 +76,18 @@ function checkLine(a, b) {
 }
 
 // [FUNCTION]: Kiểm tra theo đường chéo
-function checkDiagonal(a, b) {
+function checkDiagonal(a, b, opponent) {
   // Check Main Diagonal
   for (var i=b-1; i<=b+1; i++) {
     var select0 = document.querySelector(`input[data-position="${i-1},${i-1}"]`);
     var select1 = document.querySelector(`input[data-position="${i},${i}"]`);
     var select2 = document.querySelector(`input[data-position="${i+1},${i+1}"]`);
+    var check1 = document.querySelector(`input[data-position="${i-2},${i-2}"]`);
+    var check2 = document.querySelector(`input[data-position="${i+2},${i+2}"]`);
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value) {
+    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -92,10 +98,12 @@ function checkDiagonal(a, b) {
     var select0 = document.querySelector(`input[data-position="${(squares-1)-(i-1)},${i-1}"]`);
     var select1 = document.querySelector(`input[data-position="${(squares-1)-i},${i}"]`);
     var select2 = document.querySelector(`input[data-position="${(squares-1)-(i+1)},${i+1}"]`);
+    var check1 = document.querySelector(`input[data-position="${(squares-1)-(i-2)},${i-2}"]`);
+    var check2 = document.querySelector(`input[data-position="${(squares-1)-(i+2)},${i+2}"]`);
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value) {
+    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -117,8 +125,8 @@ function select() {
         item.value = "x";
         isX = false;
         getPosition(item);
-        checkLine(position.X,position.Y);
-        checkDiagonal(position.X,position.Y);
+        checkLine(position.X,position.Y,'o');
+        checkDiagonal(position.X,position.Y,'o');
         if (isWon) alert('Player X WIN!');
       }
       else if (item.value=='') {
@@ -126,8 +134,8 @@ function select() {
         item.value = "o";
         isX = true;
         getPosition(item);
-        checkLine(position.X,position.Y);
-        checkDiagonal(position.X,position.Y);
+        checkLine(position.X,position.Y,'x');
+        checkDiagonal(position.X,position.Y,'x');
         if (isWon) alert('Player O WIN!');        
       }
     });
