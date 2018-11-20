@@ -52,7 +52,7 @@ function checkLine(a, b, opponent) {
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
+    else if (select0.value && select1.value && select2.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -68,7 +68,7 @@ function checkLine(a, b, opponent) {
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
+    else if (select0.value && select1.value && select2.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -87,7 +87,7 @@ function checkDiagonal(a, b, opponent) {
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
+    else if (select0.value && select1.value && select2.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -103,7 +103,7 @@ function checkDiagonal(a, b, opponent) {
 
     if (select0==null || select1==null ||select2==null) 
       continue;
-    else if (select0.value && select0.value && select0.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
+    else if (select0.value && select1.value && select2.value && select0.value == select1.value && select0.value == select2.value && (check1==null || check1.value!=opponent) && (check2==null || check2.value!=opponent)) {
       isWon = true;
       break;
     }
@@ -144,8 +144,4 @@ function select() {
 
 // [EVENT]: Reset Button
 document.getElementById('reset').addEventListener('click', reset);
-
-
-
-
 
